@@ -66,6 +66,7 @@ export async function handleLogin(e) {
   const errEl  = document.getElementById('login-error');
 
   errEl.textContent = '';
+  errEl.style.display = 'none';
   btn.disabled = true;
   btn.textContent = 'Signing in…';
 
@@ -85,6 +86,7 @@ export async function handleLogin(e) {
     window.location.href = '/dashboard.html';
   } catch (err) {
     errEl.textContent = err.message;
+    errEl.style.display = 'block';   // ← was missing; error div stayed hidden
   } finally {
     btn.disabled = false;
     btn.textContent = 'Sign In';
